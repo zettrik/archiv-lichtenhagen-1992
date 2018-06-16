@@ -1,0 +1,10 @@
+site_name: Lichtenhagen im Gedächtnis
+pages:
+    - 'Start': index.md
+    - 'I - Vorgeschichte': vorgeschichte.md
+    - 'II - Ereignisgeschichte': 
+        - ereignisgeschichte.md
+    - 'III - Nachgeschichte': nachgeschichte.md
+#theme: 
+    #name: null
+    #custom_dir: /usr/share/mkdocs/themes/mkdocs_bootstrap

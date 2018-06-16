@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>About - Foo Test</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Foo Test</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">About</a>
+                    </li>
+                    <li >
+                        <a href="../bar/">Abuut</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../bar/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#nodemcu-with-c-and-arduino-ide">NodeMCU with C++ and Arduino IDE</a></li>
+            <li><a href="#rtc">RTC</a></li>
+            <li><a href="#analog-digital-converter-ads1015">Analog Digital Converter ADS1015</a></li>
+            <li><a href="#analog-digital-converter-mcp3208">Analog Digital Converter MCP3208</a></li>
+            <li><a href="#other-adc">other ADC</a></li>
+            <li><a href="#sd-card-reader">SD-Card Reader</a></li>
+            <li><a href="#two-devices-via-spi">Two Devices Via SPI</a></li>
+        <li class="main "><a href="#nodemcu-with-micropython">NodeMCU with Micropython</a></li>
+            <li><a href="#install-esptool">Install Esptool</a></li>
+            <li><a href="#flash-firmware-with-esptool">Flash Firmware With Esptool</a></li>
+            <li><a href="#micropython-benutzen">Micropython Benützen</a></li>
+            <li><a href="#example-pythonscript">Example Pythonscript</a></li>
+            <li><a href="#handle-sd-cards">Handle SD Cards</a></li>
+            <li><a href="#mcp3208">MCP3208</a></li>
+        <li class="main "><a href="#nodemcu-with-lua">NodeMCU with Lua</a></li>
+            <li><a href="#build-firmware-for-your-needs">Build Firmware For Your Needs</a></li>
+            <li><a href="#firmware-flashing">Firmware Flashing</a></li>
+            <li><a href="#flash-firmware-with-esptool_1">Flash Firmware With Esptool</a></li>
+            <li><a href="#develop-upload-lua-scripts">Develop &amp; Upload Lua Scripts</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="nodemcu-with-c-and-arduino-ide">NodeMCU with C++ and Arduino IDE</h1>
+<p>Advanced programming of the nodemcu can be done with the arduino ide
+<em> https://github.com/esp8266/Arduino
+</em> https://arduino-esp8266.readthedocs.io/en/latest/
+<em> http://www.instructables.com/id/Programming-the-ESP8266-12E-using-Arduino-software/
+</em> http://www.mikrocontroller-elektronik.de/nodemcu-esp8266-tutorial-wlan-board-arduino-ide/ (German)</p>
+<h2 id="rtc">RTC</h2>
+<p>real time clock via i2c
+<em> https://github.com/adafruit/RTClib
+</em> http://datasheets.maximintegrated.com/en/ds/DS1307.pdf
+* http://www.alldatasheet.com/view.jsp?Searchword=PCF8523</p>
+<h2 id="analog-digital-converter-ads1015">Analog Digital Converter ADS1015</h2>
+<p>12 Bit 4 chanel ADC via I2C
+* https://cmuphyscomp.github.io/60-223-f16/exercises/mobile/NodeMCU-I2C-ADC/index.html</p>
+<h2 id="analog-digital-converter-mcp3208">Analog Digital Converter MCP3208</h2>
+<p>12 Bit 8 Channel ADC via SPI
+<em> https://arduino.stackexchange.com/questions/23507/arduino-esp8266-no-spi-data-coming-from-mcp3008#30152
+</em> https://github.com/nodesign/MCP3008</p>
+<h3 id="mcp3208-dev-board">MCP3208 Dev Board</h3>
+<p>The ADS1015 is available as a breakout module. The MCP3208 is not. It seems not
+so popular yet. So if you need a handy pcb you probably have to make it your own.
+<em> http://forums.parallax.com/discussion/165675/pcbs-for-adc-chips-mcp3208-and-adc124s021
+</em> order at oshpark, seeedstudio, ...</p>
+<h2 id="other-adc">other ADC</h2>
+<ul>
+<li>http://www.esp8266-projects.com/2015/04/18-bit-adc-mcp3421-i2c-driver-esp8266.html/</li>
+</ul>
+<h2 id="sd-card-reader">SD-Card Reader</h2>
+<p>read from and write to sd-cards
+<em> http://www.esp8266.com/viewtopic.php?f=32&amp;t=3558&amp;start=12
+</em> https://github.com/esp8266/Arduino/tree/master/libraries/SD</p>
+<h2 id="two-devices-via-spi">Two Devices Via SPI</h2>
+<ul>
+<li>https://forum.mysensors.org/topic/6724/solved-nodemcu-esp8266-and-spi-with-nrf24l01-sd-card-module-sanity-errors/3 </li>
+<li>https://forums.adafruit.com/viewtopic.php?f=25&amp;p=276651</li>
+<li>https://forum.arduino.cc/index.php?topic=360718.0 </li>
+</ul>
+<h1 id="nodemcu-with-micropython">NodeMCU with Micropython</h1>
+<p>The NodeMCU board runs fine with micropython. You will have an interactive python
+shell on a microcontroller. :) No more pain in the ass(embler).</p>
+<ul>
+<li>http://micropython.org/download/</li>
+<li>http://docs.micropython.org/en/latest/esp8266/</li>
+</ul>
+<h2 id="install-esptool">Install Esptool</h2>
+<pre><code>aptitude install python3-venv
+python3 -m venv testproject
+source testproject/bin/activate
+pip install esptool
+## save packagelist for later use with: pip install -r requirements.txt
+pip freeze &gt; requirements.txt
+
+## afterwards
+deactivate
+</code></pre>
+
+<h2 id="flash-firmware-with-esptool">Flash Firmware With Esptool</h2>
+<pre><code>esptool.py --chip esp8266 --port /dev/ttyUSB0 erase_flash 
+esptool.py --chip esp8266 --port /dev/ttyUSB0 --baud 460800 write_flash -fm dio 0 firmware.bin
+</code></pre>
+
+<ul>
+<li>"-fm dio 0" is important for nodemcu boards!</li>
+</ul>
+<h2 id="micropython-benutzen">Micropython Benützen</h2>
+<h3 id="connect-to-serial-console">Connect To Serial Console</h3>
+<pre><code>screen /dev/ttyUSB0 115200
+
+## inside screen session type:
+help()
+</code></pre>
+
+<p>Pressing ctrl-E will enter a special paste mode. This allows you to copy and
+paste a chunk of text into the REPL.</p>
+<h3 id="wifi">Wifi</h3>
+<p>Initially, the device configures itself as a WiFi access point (AP).</p>
+<p>ESSID: MicroPython-xxxxxx (x’s are replaced with part of the MAC address).
+Password: micropythoN (note the upper-case N).
+IP address of the board: 192.168.4.1.
+DHCP-server is activated.</p>
+<h3 id="development-with-ampy">Development With Ampy</h3>
+<pre><code>venv pip install adafruit-ampy
+ampy -p /dev/ttyUSB0 get boot.py
+</code></pre>
+
+<h2 id="example-pythonscript">Example Pythonscript</h2>
+<pre><code class="python">import machine
+pin = machine.Pin(2, machine.Pin.OUT)
+pin.on()
+pin.off()
+</code></pre>
+
+<h2 id="handle-sd-cards">Handle SD Cards</h2>
+<ul>
+<li>build with micro sd card adapter</li>
+<li>http://www.instructables.com/id/Cheap-DIY-SD-card-breadboard-socket/</li>
+<li>https://learn.adafruit.com/micropython-hardware-sd-cards/esp8266</li>
+<li>https://forum.micropython.org/viewtopic.php?f=16&amp;t=3404</li>
+<li>wired connections:</li>
+</ul>
+<pre><code>| SD Card Pin | NodeMCU Pin (GPIO) |
+| ---- | ---- |
+| 1 CS   | D8 (GPIO15) |
+| 2 DIN, MOSI  | D7 (GPIO13) |
+| 3 GND  | GND |
+| 4 VCC  | 3,3V |
+| 5 CLK  | D5 (GPIO14) |
+| 6 GND  | GND |
+| 7 DOUT, MISO | D6 (GPIO12) |
+</code></pre>
+
+<ul>
+<li>put sdcard.py in micropython environment and use like in sd.py</li>
+<li>https://github.com/micropython/micropython/blob/master/drivers/sdcard/sdcard.py</li>
+</ul>
+<h2 id="mcp3208">MCP3208</h2>
+<p>connect a 12 bit a/d chip via spi
+* https://docs.micropython.org/en/latest/esp8266/library/machine.SPI.html
+  * https://docs.micropython.org/en/latest/pyboard/library/pyb.SPI.html
+  * https://github.com/doceme/py-spidev
+  * https://www.modmypi.com/adafruit-industries/adafruit-raspberry-pi/accessories-515/chips/8-channel-10-bit-analog-to-digital-converter-(mcp3008)</p>
+<ul>
+<li>https://forum.micropython.org/viewtopic.php?t=1959</li>
+<li>https://github.com/avolkov/rpi-gardening/blob/master/tlug_presentation.md</li>
+<li>http://hertaville.com/interfacing-an-spi-adc-mcp3008-chip-to-the-raspberry-pi-using-c.html</li>
+<li>http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/</li>
+<li>https://github.com/Sillern/esp_mcp3008 -- C implementation</li>
+<li>https://github.com/adafruit/Adafruit_Python_MCP3008 -- python bit banging version</li>
+<li>https://gist.github.com/ladyada/3151375 </li>
+<li>https://github.com/micropython/micropython/blob/master/tests/pyb/spi.py</li>
+</ul>
+<h1 id="nodemcu-with-lua">NodeMCU with Lua</h1>
+<p>Usage of lua environment on NodeMCU might be an easy starting point.</p>
+<h2 id="build-firmware-for-your-needs">Build Firmware For Your Needs</h2>
+<ul>
+<li>https://nodemcu-build.com/index.php</li>
+</ul>
+<h2 id="firmware-flashing">Firmware Flashing</h2>
+<h3 id="install-esptool_1">Install Esptool</h3>
+<pre><code>aptitude install python3-venv
+python3 -m venv testproject
+source testproject/bin/activate
+pip install esptool
+
+## save packagelist for later use with: pip install -r requirements.txt
+pip freeze &gt; requirements.txt
+
+## afterwards...
+deactivate
+</code></pre>
+
+<h2 id="flash-firmware-with-esptool_1">Flash Firmware With Esptool</h2>
+<pre><code>source testproject/bin/activate
+esptool -cp /dev/ttyUSB0 -cd nodemcu -cb 9600 -cf firmware-integer.bin
+deactivate
+</code></pre>
+
+<h2 id="develop-upload-lua-scripts">Develop &amp; Upload Lua Scripts</h2>
+<h3 id="esplorer">Esplorer</h3>
+<ul>
+<li>https://esp8266.ru/esplorer/ -- IDE and upload tool</li>
+<li>https://github.com/4refr0nt/luatool -- cli upload</li>
+</ul>
+<h3 id="nodemcu-uploader">NodeMCU Uploader</h3>
+<pre><code>pip install nodemcu-uploader
+nodemcu-uploader -B 9600 terminal
+</code></pre>
+
+<ul>
+<li>firmware before mid 2016 used 9600 baudrate instead of 115200 now</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

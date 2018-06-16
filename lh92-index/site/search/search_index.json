@@ -1,0 +1,244 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/foo/",
+            "text": "NodeMCU with C++ and Arduino IDE\n\n\nAdvanced programming of the nodemcu can be done with the arduino ide\n\n https://github.com/esp8266/Arduino\n\n https://arduino-esp8266.readthedocs.io/en/latest/\n\n http://www.instructables.com/id/Programming-the-ESP8266-12E-using-Arduino-software/\n\n http://www.mikrocontroller-elektronik.de/nodemcu-esp8266-tutorial-wlan-board-arduino-ide/ (German)\n\n\nRTC\n\n\nreal time clock via i2c\n\n https://github.com/adafruit/RTClib\n\n http://datasheets.maximintegrated.com/en/ds/DS1307.pdf\n* http://www.alldatasheet.com/view.jsp?Searchword=PCF8523\n\n\nAnalog Digital Converter ADS1015\n\n\n12 Bit 4 chanel ADC via I2C\n* https://cmuphyscomp.github.io/60-223-f16/exercises/mobile/NodeMCU-I2C-ADC/index.html\n\n\nAnalog Digital Converter MCP3208\n\n\n12 Bit 8 Channel ADC via SPI\n\n https://arduino.stackexchange.com/questions/23507/arduino-esp8266-no-spi-data-coming-from-mcp3008#30152\n\n https://github.com/nodesign/MCP3008\n\n\nMCP3208 Dev Board\n\n\nThe ADS1015 is available as a breakout module. The MCP3208 is not. It seems not\nso popular yet. So if you need a handy pcb you probably have to make it your own.\n\n http://forums.parallax.com/discussion/165675/pcbs-for-adc-chips-mcp3208-and-adc124s021\n\n order at oshpark, seeedstudio, ...\n\n\nother ADC\n\n\n\n\nhttp://www.esp8266-projects.com/2015/04/18-bit-adc-mcp3421-i2c-driver-esp8266.html/\n\n\n\n\nSD-Card Reader\n\n\nread from and write to sd-cards\n\n http://www.esp8266.com/viewtopic.php?f=32&t=3558&start=12\n\n https://github.com/esp8266/Arduino/tree/master/libraries/SD\n\n\nTwo Devices Via SPI\n\n\n\n\nhttps://forum.mysensors.org/topic/6724/solved-nodemcu-esp8266-and-spi-with-nrf24l01-sd-card-module-sanity-errors/3 \n\n\nhttps://forums.adafruit.com/viewtopic.php?f=25&p=276651\n\n\nhttps://forum.arduino.cc/index.php?topic=360718.0 \n\n\n\n\nNodeMCU with Micropython\n\n\nThe NodeMCU board runs fine with micropython. You will have an interactive python\nshell on a microcontroller. :) No more pain in the ass(embler).\n\n\n\n\nhttp://micropython.org/download/\n\n\nhttp://docs.micropython.org/en/latest/esp8266/\n\n\n\n\nInstall Esptool\n\n\naptitude install python3-venv\npython3 -m venv testproject\nsource testproject/bin/activate\npip install esptool\n## save packagelist for later use with: pip install -r requirements.txt\npip freeze > requirements.txt\n\n## afterwards\ndeactivate\n\n\n\n\nFlash Firmware With Esptool\n\n\nesptool.py --chip esp8266 --port /dev/ttyUSB0 erase_flash \nesptool.py --chip esp8266 --port /dev/ttyUSB0 --baud 460800 write_flash -fm dio 0 firmware.bin\n\n\n\n\n\n\n\"-fm dio 0\" is important for nodemcu boards!\n\n\n\n\nMicropython Ben\u00fctzen\n\n\nConnect To Serial Console\n\n\nscreen /dev/ttyUSB0 115200\n\n## inside screen session type:\nhelp()\n\n\n\n\nPressing ctrl-E will enter a special paste mode. This allows you to copy and\npaste a chunk of text into the REPL.\n\n\nWifi\n\n\nInitially, the device configures itself as a WiFi access point (AP).\n\n\nESSID: MicroPython-xxxxxx (x\u2019s are replaced with part of the MAC address).\nPassword: micropythoN (note the upper-case N).\nIP address of the board: 192.168.4.1.\nDHCP-server is activated.\n\n\nDevelopment With Ampy\n\n\nvenv pip install adafruit-ampy\nampy -p /dev/ttyUSB0 get boot.py\n\n\n\n\nExample Pythonscript\n\n\nimport machine\npin = machine.Pin(2, machine.Pin.OUT)\npin.on()\npin.off()\n\n\n\n\nHandle SD Cards\n\n\n\n\nbuild with micro sd card adapter\n\n\nhttp://www.instructables.com/id/Cheap-DIY-SD-card-breadboard-socket/\n\n\nhttps://learn.adafruit.com/micropython-hardware-sd-cards/esp8266\n\n\nhttps://forum.micropython.org/viewtopic.php?f=16&t=3404\n\n\nwired connections:\n\n\n\n\n| SD Card Pin | NodeMCU Pin (GPIO) |\n| ---- | ---- |\n| 1 CS   | D8 (GPIO15) |\n| 2 DIN, MOSI  | D7 (GPIO13) |\n| 3 GND  | GND |\n| 4 VCC  | 3,3V |\n| 5 CLK  | D5 (GPIO14) |\n| 6 GND  | GND |\n| 7 DOUT, MISO | D6 (GPIO12) |\n\n\n\n\n\n\nput sdcard.py in micropython environment and use like in sd.py\n\n\nhttps://github.com/micropython/micropython/blob/master/drivers/sdcard/sdcard.py\n\n\n\n\nMCP3208\n\n\nconnect a 12 bit a/d chip via spi\n* https://docs.micropython.org/en/latest/esp8266/library/machine.SPI.html\n  * https://docs.micropython.org/en/latest/pyboard/library/pyb.SPI.html\n  * https://github.com/doceme/py-spidev\n  * https://www.modmypi.com/adafruit-industries/adafruit-raspberry-pi/accessories-515/chips/8-channel-10-bit-analog-to-digital-converter-(mcp3008)\n\n\n\n\nhttps://forum.micropython.org/viewtopic.php?t=1959\n\n\nhttps://github.com/avolkov/rpi-gardening/blob/master/tlug_presentation.md\n\n\nhttp://hertaville.com/interfacing-an-spi-adc-mcp3008-chip-to-the-raspberry-pi-using-c.html\n\n\nhttp://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/\n\n\nhttps://github.com/Sillern/esp_mcp3008 -- C implementation\n\n\nhttps://github.com/adafruit/Adafruit_Python_MCP3008 -- python bit banging version\n\n\nhttps://gist.github.com/ladyada/3151375 \n\n\nhttps://github.com/micropython/micropython/blob/master/tests/pyb/spi.py\n\n\n\n\nNodeMCU with Lua\n\n\nUsage of lua environment on NodeMCU might be an easy starting point.\n\n\nBuild Firmware For Your Needs\n\n\n\n\nhttps://nodemcu-build.com/index.php\n\n\n\n\nFirmware Flashing\n\n\nInstall Esptool\n\n\naptitude install python3-venv\npython3 -m venv testproject\nsource testproject/bin/activate\npip install esptool\n\n## save packagelist for later use with: pip install -r requirements.txt\npip freeze > requirements.txt\n\n## afterwards...\ndeactivate\n\n\n\n\nFlash Firmware With Esptool\n\n\nsource testproject/bin/activate\nesptool -cp /dev/ttyUSB0 -cd nodemcu -cb 9600 -cf firmware-integer.bin\ndeactivate\n\n\n\n\nDevelop & Upload Lua Scripts\n\n\nEsplorer\n\n\n\n\nhttps://esp8266.ru/esplorer/ -- IDE and upload tool\n\n\nhttps://github.com/4refr0nt/luatool -- cli upload\n\n\n\n\nNodeMCU Uploader\n\n\npip install nodemcu-uploader\nnodemcu-uploader -B 9600 terminal\n\n\n\n\n\n\nfirmware before mid 2016 used 9600 baudrate instead of 115200 now",
+            "title": "About"
+        },
+        {
+            "location": "/foo/#nodemcu-with-c-and-arduino-ide",
+            "text": "Advanced programming of the nodemcu can be done with the arduino ide  https://github.com/esp8266/Arduino  https://arduino-esp8266.readthedocs.io/en/latest/  http://www.instructables.com/id/Programming-the-ESP8266-12E-using-Arduino-software/  http://www.mikrocontroller-elektronik.de/nodemcu-esp8266-tutorial-wlan-board-arduino-ide/ (German)",
+            "title": "NodeMCU with C++ and Arduino IDE"
+        },
+        {
+            "location": "/foo/#rtc",
+            "text": "real time clock via i2c  https://github.com/adafruit/RTClib  http://datasheets.maximintegrated.com/en/ds/DS1307.pdf\n* http://www.alldatasheet.com/view.jsp?Searchword=PCF8523",
+            "title": "RTC"
+        },
+        {
+            "location": "/foo/#analog-digital-converter-ads1015",
+            "text": "12 Bit 4 chanel ADC via I2C\n* https://cmuphyscomp.github.io/60-223-f16/exercises/mobile/NodeMCU-I2C-ADC/index.html",
+            "title": "Analog Digital Converter ADS1015"
+        },
+        {
+            "location": "/foo/#analog-digital-converter-mcp3208",
+            "text": "12 Bit 8 Channel ADC via SPI  https://arduino.stackexchange.com/questions/23507/arduino-esp8266-no-spi-data-coming-from-mcp3008#30152  https://github.com/nodesign/MCP3008",
+            "title": "Analog Digital Converter MCP3208"
+        },
+        {
+            "location": "/foo/#mcp3208-dev-board",
+            "text": "The ADS1015 is available as a breakout module. The MCP3208 is not. It seems not\nso popular yet. So if you need a handy pcb you probably have to make it your own.  http://forums.parallax.com/discussion/165675/pcbs-for-adc-chips-mcp3208-and-adc124s021  order at oshpark, seeedstudio, ...",
+            "title": "MCP3208 Dev Board"
+        },
+        {
+            "location": "/foo/#other-adc",
+            "text": "http://www.esp8266-projects.com/2015/04/18-bit-adc-mcp3421-i2c-driver-esp8266.html/",
+            "title": "other ADC"
+        },
+        {
+            "location": "/foo/#sd-card-reader",
+            "text": "read from and write to sd-cards  http://www.esp8266.com/viewtopic.php?f=32&t=3558&start=12  https://github.com/esp8266/Arduino/tree/master/libraries/SD",
+            "title": "SD-Card Reader"
+        },
+        {
+            "location": "/foo/#two-devices-via-spi",
+            "text": "https://forum.mysensors.org/topic/6724/solved-nodemcu-esp8266-and-spi-with-nrf24l01-sd-card-module-sanity-errors/3   https://forums.adafruit.com/viewtopic.php?f=25&p=276651  https://forum.arduino.cc/index.php?topic=360718.0",
+            "title": "Two Devices Via SPI"
+        },
+        {
+            "location": "/foo/#nodemcu-with-micropython",
+            "text": "The NodeMCU board runs fine with micropython. You will have an interactive python\nshell on a microcontroller. :) No more pain in the ass(embler).   http://micropython.org/download/  http://docs.micropython.org/en/latest/esp8266/",
+            "title": "NodeMCU with Micropython"
+        },
+        {
+            "location": "/foo/#install-esptool",
+            "text": "aptitude install python3-venv\npython3 -m venv testproject\nsource testproject/bin/activate\npip install esptool\n## save packagelist for later use with: pip install -r requirements.txt\npip freeze > requirements.txt\n\n## afterwards\ndeactivate",
+            "title": "Install Esptool"
+        },
+        {
+            "location": "/foo/#flash-firmware-with-esptool",
+            "text": "esptool.py --chip esp8266 --port /dev/ttyUSB0 erase_flash \nesptool.py --chip esp8266 --port /dev/ttyUSB0 --baud 460800 write_flash -fm dio 0 firmware.bin   \"-fm dio 0\" is important for nodemcu boards!",
+            "title": "Flash Firmware With Esptool"
+        },
+        {
+            "location": "/foo/#micropython-benutzen",
+            "text": "",
+            "title": "Micropython Ben\u00fctzen"
+        },
+        {
+            "location": "/foo/#connect-to-serial-console",
+            "text": "screen /dev/ttyUSB0 115200\n\n## inside screen session type:\nhelp()  Pressing ctrl-E will enter a special paste mode. This allows you to copy and\npaste a chunk of text into the REPL.",
+            "title": "Connect To Serial Console"
+        },
+        {
+            "location": "/foo/#wifi",
+            "text": "Initially, the device configures itself as a WiFi access point (AP).  ESSID: MicroPython-xxxxxx (x\u2019s are replaced with part of the MAC address).\nPassword: micropythoN (note the upper-case N).\nIP address of the board: 192.168.4.1.\nDHCP-server is activated.",
+            "title": "Wifi"
+        },
+        {
+            "location": "/foo/#development-with-ampy",
+            "text": "venv pip install adafruit-ampy\nampy -p /dev/ttyUSB0 get boot.py",
+            "title": "Development With Ampy"
+        },
+        {
+            "location": "/foo/#example-pythonscript",
+            "text": "import machine\npin = machine.Pin(2, machine.Pin.OUT)\npin.on()\npin.off()",
+            "title": "Example Pythonscript"
+        },
+        {
+            "location": "/foo/#handle-sd-cards",
+            "text": "build with micro sd card adapter  http://www.instructables.com/id/Cheap-DIY-SD-card-breadboard-socket/  https://learn.adafruit.com/micropython-hardware-sd-cards/esp8266  https://forum.micropython.org/viewtopic.php?f=16&t=3404  wired connections:   | SD Card Pin | NodeMCU Pin (GPIO) |\n| ---- | ---- |\n| 1 CS   | D8 (GPIO15) |\n| 2 DIN, MOSI  | D7 (GPIO13) |\n| 3 GND  | GND |\n| 4 VCC  | 3,3V |\n| 5 CLK  | D5 (GPIO14) |\n| 6 GND  | GND |\n| 7 DOUT, MISO | D6 (GPIO12) |   put sdcard.py in micropython environment and use like in sd.py  https://github.com/micropython/micropython/blob/master/drivers/sdcard/sdcard.py",
+            "title": "Handle SD Cards"
+        },
+        {
+            "location": "/foo/#mcp3208",
+            "text": "connect a 12 bit a/d chip via spi\n* https://docs.micropython.org/en/latest/esp8266/library/machine.SPI.html\n  * https://docs.micropython.org/en/latest/pyboard/library/pyb.SPI.html\n  * https://github.com/doceme/py-spidev\n  * https://www.modmypi.com/adafruit-industries/adafruit-raspberry-pi/accessories-515/chips/8-channel-10-bit-analog-to-digital-converter-(mcp3008)   https://forum.micropython.org/viewtopic.php?t=1959  https://github.com/avolkov/rpi-gardening/blob/master/tlug_presentation.md  http://hertaville.com/interfacing-an-spi-adc-mcp3008-chip-to-the-raspberry-pi-using-c.html  http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/  https://github.com/Sillern/esp_mcp3008 -- C implementation  https://github.com/adafruit/Adafruit_Python_MCP3008 -- python bit banging version  https://gist.github.com/ladyada/3151375   https://github.com/micropython/micropython/blob/master/tests/pyb/spi.py",
+            "title": "MCP3208"
+        },
+        {
+            "location": "/foo/#nodemcu-with-lua",
+            "text": "Usage of lua environment on NodeMCU might be an easy starting point.",
+            "title": "NodeMCU with Lua"
+        },
+        {
+            "location": "/foo/#build-firmware-for-your-needs",
+            "text": "https://nodemcu-build.com/index.php",
+            "title": "Build Firmware For Your Needs"
+        },
+        {
+            "location": "/foo/#firmware-flashing",
+            "text": "",
+            "title": "Firmware Flashing"
+        },
+        {
+            "location": "/foo/#install-esptool_1",
+            "text": "aptitude install python3-venv\npython3 -m venv testproject\nsource testproject/bin/activate\npip install esptool\n\n## save packagelist for later use with: pip install -r requirements.txt\npip freeze > requirements.txt\n\n## afterwards...\ndeactivate",
+            "title": "Install Esptool"
+        },
+        {
+            "location": "/foo/#flash-firmware-with-esptool_1",
+            "text": "source testproject/bin/activate\nesptool -cp /dev/ttyUSB0 -cd nodemcu -cb 9600 -cf firmware-integer.bin\ndeactivate",
+            "title": "Flash Firmware With Esptool"
+        },
+        {
+            "location": "/foo/#develop-upload-lua-scripts",
+            "text": "",
+            "title": "Develop &amp; Upload Lua Scripts"
+        },
+        {
+            "location": "/foo/#esplorer",
+            "text": "https://esp8266.ru/esplorer/ -- IDE and upload tool  https://github.com/4refr0nt/luatool -- cli upload",
+            "title": "Esplorer"
+        },
+        {
+            "location": "/foo/#nodemcu-uploader",
+            "text": "pip install nodemcu-uploader\nnodemcu-uploader -B 9600 terminal   firmware before mid 2016 used 9600 baudrate instead of 115200 now",
+            "title": "NodeMCU Uploader"
+        },
+        {
+            "location": "/bar/",
+            "text": "About\n\n\nThis is a proof of concept for a sophisticated charge controller based on\n\nNodeMCU\n. The idea derived from the wonderful\nsimple and rock solid \n555Controller\n.\nA lot of precautions and hints were also taken from \n\nOpen Design Charge Regulator Project\n.\nThe NodeMCU is a development board for an ESP8266 chip. It integrates a 3.3V regulator and USB communication.\n\n\nEnhancements to 555Controller:\n\n\n\n\nmeasuring wind speed and blade rotation\n\n\ndata logging to sd-card\n\n\nwireless control and monitoring of the internal state\n\n\n\n\nOn The Downside:\n\n\n\n\nway more power consumption for the controller itself\n\n\nmore complex setup\n\n\n\n\nVoltage Measurements\n\n\n\n\nhttps://www.re-innovation.co.uk/docs/accurate-voltage-measurment/\n\n\nhttps://www.re-innovation.co.uk/docs/dc-current-measurement/\n\n\n\n\nPower Consumption\n\n\n\n\nNodeMCU 95mA @ 3.3V with active wifi\n\n\nNodeMCU 38mA @ 3.3V without wifi\n\n\nSD-Card Adapter 20mA @ 3.3V\n\n\nMCP3208 0,5mA @ 3.3V\n\n\nRTC ?\n\n\n\n\nPower Supply\n\n\nHow to power the NodeMCU\n\n\nVoltage Regulator\n\n\nIn case the voltage regulator (AMS1117) doesn't fit your needs or was damaged\nyou may replace it with:\n\n LP2951 3.3V\n\n MCP1700\n\n L78L33 (max. 100mA which is probably not enough)\n\n https://www.tindie.com/products/nEXT_EVO1/30v-synchronous-step-down-dc-dc-converter/\n\n\nBattery Powered\n\n\n\n\ncar battery: Pololu 3.3V Low-Voltage Cutoff S9V11F3S5C3 (up to 16V) \n\n\nhttp://pic-microcontroller.com/running-nodemcu-on-a-battery/\n\n\nhttp://www.instructables.com/id/ESP8266-Li-Ion-Battery-rechargeable-battery-power-/\n\n\nhttp://blog.itechica.com/?p=92 -- power usage in deepsleep (in German)\n\n\nno serial connection\n\n\ndelay(100)\n\n\npull down resistance on GPIO0 ?\n\n\n\n\nLi-ion Battery\n\n\n\n\nli-ion: Pololu Adjustable Step-Up/Step-Down Voltage Regulator S7V8A (2,7 - 11,8V)\n\n\nYou could also try to run it directly from a 3.7V li-ion battery without a voltage regulator but with a small voltage dropping diode as described here. It worked in my tests with a 18650 battery but might be dangerous in long term:\n\n\nhttps://tinker.yeoman.com.au/2016/05/29/running-nodemcu-on-a-battery-esp8266-low-power-consumption-revisited/\n\n\n\n\nlow voltage disconnect\n\n\n\n\nhttp://homecircuits.eu/blog/program-attiny13a-via-arduino-board/\n\n\nhttp://homecircuits.eu/blog/low-power-picopower-attiny13a/\n\n\nhttp://homecircuits.eu/blog/arduino-low-voltage-disconnect-circuit/\n\n\n\n\nWifi\n\n\nMonitoring of the charge controller is possible via wifi. Status\nmessages are regulary send to an mqttbroker.\n\n\nMQTT\n\n\n\n\nhttps://github.com/knolleary/pubsubclient -- arduino/esp8266 MQTT client\n\n\nto send data in json format you probably want to increase the max mqtt packet size. adapt to your needs in PubSubClient.h: #define MQTT_MAX_PACKET_SIZE 1024\n\n\nhttps://pypi.python.org/pypi/paho-mqtt\n\n\nhttps://mosquitto.org/ -- lightweight MQTT broker (e.g. for wifi access points)\n\n\non openwrt/lede: opkg update; opkg install mosquitto-nossl\n\n\non debian: apt-get install mosquitto\n\n\nlistens by default on port 1883\n\n\nread mqtt channel on local mqtt broker:\n\n\naptitude install mosquitto-clients\n\n\nmosquitto_sub -d -h broker -t \"node/1/power\"  # one channel\n\n\nmosquitto_sub -d -h localhost -t \"node/#\" # all subchannels\n\n\n\n\nCircuit\n\n\n\n\nhttps://forum.mysensors.org/topic/6724/solved-nodemcu-esp8266-and-spi-with-nrf24l01-sd-card-module-sanity-errors/3\n\n\nhttp://www.electronicwings.com/nodemcu/nodemcu-i2c-with-arduino-ide\n\n\n\n\nFritzing Parts\n\n\n\n\nhttps://github.com/squix78/esp8266-fritzing-parts -- NodeMCU\n\n\nhttps://github.com/adafruit/Fritzing-Library/tree/master/parts -- MCP3008\n\n\nMCP3208 8 channel 12-Bit ADC\n -- MCP3208\n\n\n\n\nPCB\n\n\n\n\nhttp://bwir.de/pcb-platinen-mit-haushaltsmitteln-guenstig-selber-herstellen/ -- self made pcbs\n\n\n\n\nLinks\n\n\n\n\nhttps://frightanic.com/iot/tools-ides-nodemcu/ -- comparison of development tools\n\n\nhttps://github.com/lvidarte/esp8266/wiki -- good starting point as a NodeMCU workshop",
+            "title": "Abuut"
+        },
+        {
+            "location": "/bar/#about",
+            "text": "This is a proof of concept for a sophisticated charge controller based on NodeMCU . The idea derived from the wonderful\nsimple and rock solid  555Controller .\nA lot of precautions and hints were also taken from  Open Design Charge Regulator Project .\nThe NodeMCU is a development board for an ESP8266 chip. It integrates a 3.3V regulator and USB communication.",
+            "title": "About"
+        },
+        {
+            "location": "/bar/#enhancements-to-555controller",
+            "text": "measuring wind speed and blade rotation  data logging to sd-card  wireless control and monitoring of the internal state",
+            "title": "Enhancements to 555Controller:"
+        },
+        {
+            "location": "/bar/#on-the-downside",
+            "text": "way more power consumption for the controller itself  more complex setup",
+            "title": "On The Downside:"
+        },
+        {
+            "location": "/bar/#voltage-measurements",
+            "text": "https://www.re-innovation.co.uk/docs/accurate-voltage-measurment/  https://www.re-innovation.co.uk/docs/dc-current-measurement/",
+            "title": "Voltage Measurements"
+        },
+        {
+            "location": "/bar/#power-consumption",
+            "text": "NodeMCU 95mA @ 3.3V with active wifi  NodeMCU 38mA @ 3.3V without wifi  SD-Card Adapter 20mA @ 3.3V  MCP3208 0,5mA @ 3.3V  RTC ?",
+            "title": "Power Consumption"
+        },
+        {
+            "location": "/bar/#power-supply",
+            "text": "How to power the NodeMCU",
+            "title": "Power Supply"
+        },
+        {
+            "location": "/bar/#voltage-regulator",
+            "text": "In case the voltage regulator (AMS1117) doesn't fit your needs or was damaged\nyou may replace it with:  LP2951 3.3V  MCP1700  L78L33 (max. 100mA which is probably not enough)  https://www.tindie.com/products/nEXT_EVO1/30v-synchronous-step-down-dc-dc-converter/",
+            "title": "Voltage Regulator"
+        },
+        {
+            "location": "/bar/#battery-powered",
+            "text": "car battery: Pololu 3.3V Low-Voltage Cutoff S9V11F3S5C3 (up to 16V)   http://pic-microcontroller.com/running-nodemcu-on-a-battery/  http://www.instructables.com/id/ESP8266-Li-Ion-Battery-rechargeable-battery-power-/  http://blog.itechica.com/?p=92 -- power usage in deepsleep (in German)  no serial connection  delay(100)  pull down resistance on GPIO0 ?",
+            "title": "Battery Powered"
+        },
+        {
+            "location": "/bar/#li-ion-battery",
+            "text": "li-ion: Pololu Adjustable Step-Up/Step-Down Voltage Regulator S7V8A (2,7 - 11,8V)  You could also try to run it directly from a 3.7V li-ion battery without a voltage regulator but with a small voltage dropping diode as described here. It worked in my tests with a 18650 battery but might be dangerous in long term:  https://tinker.yeoman.com.au/2016/05/29/running-nodemcu-on-a-battery-esp8266-low-power-consumption-revisited/",
+            "title": "Li-ion Battery"
+        },
+        {
+            "location": "/bar/#low-voltage-disconnect",
+            "text": "http://homecircuits.eu/blog/program-attiny13a-via-arduino-board/  http://homecircuits.eu/blog/low-power-picopower-attiny13a/  http://homecircuits.eu/blog/arduino-low-voltage-disconnect-circuit/",
+            "title": "low voltage disconnect"
+        },
+        {
+            "location": "/bar/#wifi",
+            "text": "Monitoring of the charge controller is possible via wifi. Status\nmessages are regulary send to an mqttbroker.",
+            "title": "Wifi"
+        },
+        {
+            "location": "/bar/#mqtt",
+            "text": "https://github.com/knolleary/pubsubclient -- arduino/esp8266 MQTT client  to send data in json format you probably want to increase the max mqtt packet size. adapt to your needs in PubSubClient.h: #define MQTT_MAX_PACKET_SIZE 1024  https://pypi.python.org/pypi/paho-mqtt  https://mosquitto.org/ -- lightweight MQTT broker (e.g. for wifi access points)  on openwrt/lede: opkg update; opkg install mosquitto-nossl  on debian: apt-get install mosquitto  listens by default on port 1883  read mqtt channel on local mqtt broker:  aptitude install mosquitto-clients  mosquitto_sub -d -h broker -t \"node/1/power\"  # one channel  mosquitto_sub -d -h localhost -t \"node/#\" # all subchannels",
+            "title": "MQTT"
+        },
+        {
+            "location": "/bar/#circuit",
+            "text": "https://forum.mysensors.org/topic/6724/solved-nodemcu-esp8266-and-spi-with-nrf24l01-sd-card-module-sanity-errors/3  http://www.electronicwings.com/nodemcu/nodemcu-i2c-with-arduino-ide",
+            "title": "Circuit"
+        },
+        {
+            "location": "/bar/#fritzing-parts",
+            "text": "https://github.com/squix78/esp8266-fritzing-parts -- NodeMCU  https://github.com/adafruit/Fritzing-Library/tree/master/parts -- MCP3008  MCP3208 8 channel 12-Bit ADC  -- MCP3208",
+            "title": "Fritzing Parts"
+        },
+        {
+            "location": "/bar/#pcb",
+            "text": "http://bwir.de/pcb-platinen-mit-haushaltsmitteln-guenstig-selber-herstellen/ -- self made pcbs",
+            "title": "PCB"
+        },
+        {
+            "location": "/bar/#links",
+            "text": "https://frightanic.com/iot/tools-ides-nodemcu/ -- comparison of development tools  https://github.com/lvidarte/esp8266/wiki -- good starting point as a NodeMCU workshop",
+            "title": "Links"
+        }
+    ]
+}
