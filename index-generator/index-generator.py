@@ -23,7 +23,6 @@ class LH92:
         """ create one single page in markdown syntax for mkdocs
         """
         pagetext = ""
-        pagetext += "#Ereignisgeschichte\n"
         # begin range with 1 to skip csv head and end with +1
         for row in range(1, len(csv_data[1:])+1):
             #print(csv_data[row])
@@ -37,7 +36,7 @@ class LH92:
                     row, str(title)))
                 """
                 titletext = self.convert_csv2pagetext(csv_data, row)
-                #print(titeltext)
+                #print(titletext)
                 pagetext += titletext
         print(pagetext)
         return
@@ -127,8 +126,8 @@ class LH92:
 
         # handle all other fields
         text += "* Details:\n"
-        for field in range(1, len(csv_data[1:])):
-        #for field in range(len(csv_data[0])):
+        #for field in range(2, len(csv_data[1:])):
+        for field in range(len(csv_data[0])):
             if csv_data[row][field]:
                 if not csv_data[0][field] == "Tag" \
                 and not csv_data[0][field] == "Dateianhang" \
