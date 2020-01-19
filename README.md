@@ -1,11 +1,20 @@
-# Scripts and documentation for building an webarchive with mkdocs
+# Invenio
+## Installation & Setup
+* https://inveniosoftware.org/gettingstarted/
+  * apt install cookiecutter pipenv docker-compose python3.6
+  * in /etc/sysctl.conf: vm.max_map_count=262144
+    * or: sysctl -w vm.max_map_count=262144
+
+
+----
+# Scripts and documentation for building an finding aid of an zotero export with mkdocs
 
 ## Installation & Setup
-* grep zotero.csv
 * apt install mkdocs
 * mkdocs new lh92-index
 * vi lh92-index/mkdocs.yml
 * vi lh92-index/docs/index.md
+* export collection in zotero as csv file
 * python script generates sites with markdown syntax
     * convert tif files in jpg
     * text recognition for all images
@@ -13,9 +22,21 @@
 * mkdocs build
 * copy static html files to webserver
 
+### better navigation
+* https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin/
+
+### themes
+```
+pip3 search mkdocs | grep theme
+```
+
+or build your own: https://www.mkdocs.org/user-guide/styling-your-docs/
+
+### web app
+* https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ----
-# Scripts and documentation for building an webarchive with Zotero and Zot_Bib_Web
+# Scripts and documentation for building an finding aid with Zotero and Zot_Bib_Web
 
 ## Documentation
 * http://zot-bib-web.readthedocs.io/en/latest/#
